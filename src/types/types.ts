@@ -1,5 +1,10 @@
 import { Document, Schema } from "mongoose";
 
+export interface ImageDocument {
+  url: string;
+  alt?: string;
+}
+
 export interface EnrichedOrders {
   name: string;
   email: string;
@@ -81,21 +86,39 @@ export interface ItemDocument {
 
 export interface ProductDocument extends Document {
   name: string;
+  slug: string;
   description: string;
+  longDescription?: string;
   price: number;
+  currency?: string;
   category: string;
-  sizes: [string];
-  image: [string];
-  variants: [VariantsDocument];
+  brand?: string;
+  sku?: string;
+  stock?: number;
+  sizes: string[];
+  images: ImageDocument[];
+  variants: VariantsDocument[];
+  rating?: {
+    average: number;
+    count: number;
+  };
+  tags?: string[];
+  meta?: {
+    title?: string;
+    keywords?: string[];
+    description?: string;
+  };
   quantity: number;
   productId: Schema.Types.ObjectId;
   purchased: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface VariantsDocument {
   priceId: string;
   color: string;
-  images: [string];
+  images: ImageDocument[];
 }
 export interface UserDocument {
   email: string;
