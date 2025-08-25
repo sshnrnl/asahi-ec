@@ -48,12 +48,13 @@ export const Products = async ({
           category,
           quantity,
           productId,
-          image,
+          slug,
+          images,
           name,
           price,
           purchased,
         } = product;
-        const productLink = `/${category}/${quantity ? productId : _id}`;
+        const productLink = `/${category}/${quantity ? productId : slug}`;
         const containerClassname = [
           "flex justify-between border border-solid border-border-primary rounded-md overflow-hidden",
           extraClassname === "cart-ord-mobile"
@@ -77,7 +78,8 @@ export const Products = async ({
           <div className={containerClassname} key={index}>
             <Link href={productLink} className={linkClassname}>
               <Images
-                image={image}
+                url={images[0].url}
+                alt={images[0].alt}
                 name={name}
                 width={280}
                 height={425}
@@ -106,7 +108,7 @@ export const Products = async ({
               </div>
               {!purchased && (
                 <div className="text-sm">
-                  {quantity ? (price * quantity).toFixed(2) : price} €
+                  Start From {quantity ? (price * quantity).toFixed(2) : price} IDR
                 </div>
               )}
               {quantity !== undefined && <ProductCartInfo product={product} />}

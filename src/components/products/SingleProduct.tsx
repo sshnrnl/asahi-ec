@@ -18,12 +18,28 @@ interface SingleProduct {
 
 export const SingleProduct = ({ product, session }: SingleProduct) => {
   const productPlainObject: ProductDocument = JSON.parse(product);
-  const [selectedVariant, setSelectedVariant] = useState<VariantsDocument>(
-    productPlainObject.variants[0]
-  );
+
+  // merge product images into the first variant
+  const initialVariant: VariantsDocument = {
+    ...productPlainObject.variants[0],
+    images: [
+      ...(productPlainObject.variants[0].images || []),
+      ...(productPlainObject.images || []),
+    ],
+  };
+
+  const [selectedVariant, setSelectedVariant] =
+    useState<VariantsDocument>(initialVariant);
+
+  const selectVariant = (variant: VariantsDocument) => {
+    setSelectedVariant({
+      ...variant,
+      images: [...(variant.images || []), ...(productPlainObject.images || [])],
+    });
+  };
 
   if (!product) {
-    return <div>Produnct not found</div>;
+    return <div>Product not found</div>;
   }
 
   return (
@@ -41,7 +57,9 @@ export const SingleProduct = ({ product, session }: SingleProduct) => {
             <h1 className="text-base font-semibold">
               {productPlainObject.name}
             </h1>
-            <span className="text-sm">{productPlainObject.price}€</span>
+            <span className="text-sm">
+              Start From {productPlainObject.price}IDR
+            </span>
             <p className="text-sm">{productPlainObject.description}</p>
           </div>
 
@@ -49,7 +67,7 @@ export const SingleProduct = ({ product, session }: SingleProduct) => {
             session={session}
             product={productPlainObject}
             selectedVariant={selectedVariant}
-            setSelectedVariant={setSelectedVariant}
+            setSelectedVariant={selectVariant} // <-- pass the helper
           />
         </div>
 

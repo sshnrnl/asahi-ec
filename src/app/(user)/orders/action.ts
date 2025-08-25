@@ -121,7 +121,7 @@ export const saveOrder = async (data: Stripe.Checkout.Session) => {
       quantity: item.quantity,
       size: item.size,
       color: item.color,
-      image: item.image,
+      image: item.images,
     }));
 
     const newOrder: any = {

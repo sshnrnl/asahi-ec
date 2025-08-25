@@ -9,7 +9,7 @@ import { authOptions } from "@/libs/auth";
 
 export async function generateMetadata() {
   return {
-    title: `Orders | Ecommerce Template`,
+    title: `Orders | PT ASAHI FIBREGLASS`,
   };
 }
 
@@ -80,7 +80,7 @@ const Orders = async () => {
               "dd LLL yyyy"
             )} | ${(order.total_price / 100).toFixed(
               2
-            )}€ | Items: ${order.products.reduce(
+            )}IDR | Items: ${order.products.reduce(
               (total, product) => total + product.quantity,
               0
             )} `}</h4>

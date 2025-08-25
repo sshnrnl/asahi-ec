@@ -43,22 +43,23 @@ export async function getItems(userId: string) {
 
         if (!matchingProduct) {
           console.error(
-            `Product not found for productId: ${cartItem.productId}`,
+            `Product not found for productId: ${cartItem.productId}`
           );
           continue;
         } else {
           const matchingVariant = matchingProduct.variants.find(
             (variant: VariantsDocument) =>
-              variant.priceId === cartItem.variantId,
+              variant.priceId === cartItem.variantId
           );
           const updatedCartItem: EnrichedProducts = {
             ...cartItem,
             color: matchingVariant.color,
             category: matchingProduct.category,
-            image: [matchingVariant.images[0]],
+            images: [matchingVariant.images[0]],
             name: matchingProduct.name,
             purchased: false,
             _id: matchingProduct._id.toString(),
+            slug: "",
           };
 
           updatedCart.push(updatedCartItem);
@@ -87,7 +88,7 @@ export async function addItem(
   productId: Schema.Types.ObjectId,
   size: string,
   variantId: string,
-  price: number,
+  price: number
 ) {
   const session: Session | null = await getServerSession(authOptions);
 
@@ -147,7 +148,7 @@ export async function addItem(
 export async function delItem(
   productId: Schema.Types.ObjectId,
   size: string,
-  variantId: string,
+  variantId: string
 ) {
   const session: Session | null = await getServerSession(authOptions);
   const userId = session?.user._id;
@@ -162,7 +163,7 @@ export async function delItem(
             item.productId === productId &&
             item.variantId === variantId &&
             item.size === size
-          ),
+          )
       ),
     };
 
@@ -174,7 +175,7 @@ export async function delItem(
 export async function delOneItem(
   productId: Schema.Types.ObjectId,
   size: string,
-  variantId: string,
+  variantId: string
 ) {
   try {
     const session: Session | null = await getServerSession(authOptions);

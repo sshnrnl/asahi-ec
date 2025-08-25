@@ -53,11 +53,13 @@ export const getRandomProducts = async (productId: string) => {
   }
 };
 
-export const getProduct = async (_id: string) => {
+export const getProduct = async (slug: string) => {
   try {
     await connectDB();
 
-    const product = await Product.findOne({ _id });
+    const product = await Product.findOne({ slug });
+    console.log("Fetched product:", product);
+    console.log("slug:", slug);
     return product;
   } catch (error) {
     console.error("Error getting product:", error);

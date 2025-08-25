@@ -19,14 +19,15 @@ const cloudinaryLoader: ImageLoader = ({ src, width, quality }) => {
 };
 
 export const Images = ({
-  image,
-  name,
+  alt,
+  url,
   width,
   height,
   priority,
   sizes,
 }: {
-  image: [string];
+  url: string;
+  alt: string;
   name: string;
   width: number;
   height: number;
@@ -42,11 +43,11 @@ export const Images = ({
   return (
     <div className={!imageLoaded ? "relative" : ""}>
       <Image
-        loader={cloudinaryLoader}
+        loader={({ src }) => src}
         width={width}
         height={height}
-        src={image[0]}
-        alt={name}
+        src={`${process.env.NEXT_PUBLIC_APP_URL}/product/thumbnail/${url}`}
+        alt={alt}
         priority={priority}
         className="w-full max-w-img aspect-[2/3] brightness-90"
         onLoad={handleImageLoadComplete}

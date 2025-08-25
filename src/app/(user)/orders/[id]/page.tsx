@@ -8,7 +8,7 @@ import { EnrichedProducts } from "@/types/types";
 
 export async function generateMetadata() {
   return {
-    title: `Order Details | Ecommerce Template`,
+    title: `Order Details | PT ASAHI FIBREGLASS`,
   };
 }
 
@@ -42,7 +42,7 @@ const OrderProducts = async ({ id }: { id: string }) => {
     );
     const allProducts: EnrichedProducts[] = order.products.filter(
       Boolean
-    ) as EnrichedProducts[];
+    ) as unknown as EnrichedProducts[];
     const productsText = totalProducts === 1 ? "item" : "items";
 
     return (
@@ -89,17 +89,17 @@ const OrderProducts = async ({ id }: { id: string }) => {
               <span>
                 {totalProducts} {productsText}
               </span>{" "}
-              <span>{(order.total_price / 100).toFixed(2)} €</span>
+              <span>{(order.total_price / 100).toFixed(2)} IDR</span>
             </div>
             <div className={bxInfoStyles}>
               <span>Delivery</span> <span>FREE</span>
             </div>
             <div className={bxInfoStyles}>
-              <span>Total Discount</span> <span>0 €</span>
+              <span>Total Discount</span> <span>0 IDR</span>
             </div>
             <div className={bxInfoStyles}>
               <span>Total</span>{" "}
-              <span>{(order.total_price / 100).toFixed(2)} €</span>
+              <span>{(order.total_price / 100).toFixed(2)} IDR</span>
             </div>
             <div className={bxInfoStyles}>(VAT included)</div>
           </div>
@@ -181,7 +181,7 @@ const AllOrderSkeleton = ({ items }: { items: number }) => {
             <span>Delivery</span> <span>FREE</span>
           </div>
           <div className={bxInfoStyles}>
-            <span>Total Discount</span> <span>0 €</span>
+            <span>Total Discount</span> <span>0 IDR</span>
           </div>
           <div className={bxInfoStyles}>
             <span>Total</span>{" "}

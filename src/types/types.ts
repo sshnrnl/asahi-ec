@@ -2,7 +2,7 @@ import { Document, Schema } from "mongoose";
 
 export interface ImageDocument {
   url: string;
-  alt?: string;
+  alt: string;
 }
 
 export interface EnrichedOrders {
@@ -22,8 +22,9 @@ export interface EnrichedOrders {
 export interface EnrichedProducts {
   name: string;
   category: string;
-  image: [string];
+  images: ImageDocument[];
   price: number;
+  slug: string;
   purchased: boolean;
   color: string;
   size: string;
@@ -63,7 +64,7 @@ export interface AddressDocument {
 
 export interface ProductsDocument {
   productId: Schema.Types.ObjectId;
-  image: string;
+  images: ImageDocument[];
   color: string;
   size: string;
   quantity: number;

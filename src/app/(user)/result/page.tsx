@@ -3,7 +3,7 @@ import { saveOrder } from "../orders/action";
 
 export async function generateMetadata() {
   return {
-    title: "Purchase Result | Ecommerce Template",
+    title: "Purchase Result | PT ASAHI FIBREGLASS",
     description:
       "Result of the purchase in the test ecommerce created by Marcos Cámara",
   };

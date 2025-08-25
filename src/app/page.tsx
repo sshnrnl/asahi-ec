@@ -17,6 +17,7 @@ const Home = async () => {
 
 const AllProducts = async () => {
   const products = await getAllProducts();
+  console.log(products);
 
   return <Products products={products} extraClassname="" />;
 };

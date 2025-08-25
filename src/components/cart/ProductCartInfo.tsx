@@ -28,7 +28,7 @@ const ProductCartInfo = ({ product }: { product: EnrichedProducts }) => {
     if (purchased) {
       return (
         <div className="text-sm">
-          {quantity ? (price * quantity).toFixed(2) : price}€
+          {quantity ? (price * quantity).toFixed(2) : price}IDR
         </div>
       );
     } else {

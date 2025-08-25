@@ -8,7 +8,7 @@ import { Loader } from "@/components/common/Loader";
 
 export async function generateMetadata() {
   return {
-    title: "Wishlists | Ecommerce Template",
+    title: "Wishlists | PT ASAHI FIBREGLASS",
     description: `Wishlists at e-commerce template made by Marcos Cámara`,
   };
 }
