@@ -32,9 +32,14 @@ export const Navbar = ({ session, totalItemsCart, totalWishlists }: Navbar) => {
   };
 
   const linksData = [
-    { path: "/t-shirts", name: "T-SHIRTS" },
-    { path: "/pants", name: "PANTS" },
-    { path: "/sweatshirts", name: "SWEATSHIRTS" },
+    {
+      path: `${process.env.NEXT_PUBLIC_APP_URL}/ipal-domestik/beli-ipal-domestik-rumah-sakit-pabrik-industri-terbaik-solusi-air-limbah`,
+      name: "IPAL DOMESTIK",
+    },
+    {
+      path: `${process.env.NEXT_PUBLIC_APP_URL}/IPAL/jual-ipal-terbaik-harga-murah-agustus-2025-cicil-0`,
+      name: "IPAL",
+    },
   ];
 
   const authLinks = () => {

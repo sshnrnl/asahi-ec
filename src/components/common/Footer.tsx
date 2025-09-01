@@ -112,26 +112,18 @@ export const Footer = () => {
           <ul className="grid grid-cols-2">
             <li className={liStyles}>
               <Link
-                href={`${process.env.NEXT_PUBLIC_APP_URL}/t-shirts`}
+                href={`${process.env.NEXT_PUBLIC_APP_URL}/IPAL/jual-ipal-terbaik-harga-murah-agustus-2025-cicil-0`}
                 className={linkStyles}
               >
-                T-shirts
+                IPAL
               </Link>
             </li>
             <li className={liStyles}>
               <Link
-                href={`${process.env.NEXT_PUBLIC_APP_URL}/pants`}
+                href={`${process.env.NEXT_PUBLIC_APP_URL}/ipal-domestik/beli-ipal-domestik-rumah-sakit-pabrik-industri-terbaik-solusi-air-limbah`}
                 className={linkStyles}
               >
-                Pants
-              </Link>
-            </li>
-            <li className={liStyles}>
-              <Link
-                href={`${process.env.NEXT_PUBLIC_APP_URL}/sweatshirts`}
-                className={linkStyles}
-              >
-                Sweatshirts
+                IPAL DOMESTIK
               </Link>
             </li>
           </ul>
