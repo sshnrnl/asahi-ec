@@ -8,6 +8,7 @@ import { Session } from "next-auth";
 import { Suspense } from "react";
 import ProductSkeleton from "@/components/skeletons/ProductSkeleton";
 import SingleProductSkeleton from "@/components/skeletons/SingleProductSkeleton";
+import Script from "next/script";
 
 type Props = {
   params: {
@@ -23,7 +24,16 @@ export async function generateMetadata({ params }: Props) {
   const product: ProductDocument = await getProduct(params.id);
   const capitalizedName = capitalizeFirstLetter(product.name);
 
-  const currency = product.currency || "IDR";
+  return {
+    title: `${capitalizedName} | PT ASAHI FIBREGLASS`,
+    description: product.meta?.description || product.description,
+    keywords: product.meta?.keywords,
+  };
+}
+
+const ProductPage = async ({ params }: Props) => {
+  const product: ProductDocument = await getProduct(params.id);
+  const capitalizedName = capitalizeFirstLetter(product.name);
 
   const schemaOrgProduct = {
     "@context": "https://schema.org/",
@@ -42,7 +52,7 @@ export async function generateMetadata({ params }: Props) {
     offers: {
       "@type": "Offer",
       url: `https://ipalbioasahi.com/products/${product.slug}`,
-      priceCurrency: currency,
+      priceCurrency: product.currency || "IDR",
       price: product.price,
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
@@ -56,35 +66,35 @@ export async function generateMetadata({ params }: Props) {
       : undefined,
   };
 
-  return {
-    title: `${capitalizedName} | PT ASAHI FIBREGLASS`,
-    description: product.meta?.description || product.description,
-    keywords: product.meta?.keywords,
-    other: {
-      "application/ld+json": JSON.stringify(schemaOrgProduct),
-    },
-  };
-}
-const ProductPage = async ({ params }: Props) => (
-  <section className="pt-14">
-    <Suspense
-      fallback={
-        <div>
-          <SingleProductSkeleton />
-          <h2 className="mt-24 mb-5 text-xl font-bold sm:text-2xl">
-            YOU MIGHT ALSO LIKE...
-          </h2>
-          <ProductSkeleton
-            extraClassname={"colums-mobile"}
-            numberProducts={6}
-          />
-        </div>
-      }
-    >
-      <AllProducts id={params.id} />
-    </Suspense>
-  </section>
-);
+  return (
+    <section className="pt-14">
+      {/* ✅ JSON-LD keluar sebagai <script> */}
+      <Script
+        id="ld-json-product"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrgProduct) }}
+      />
+
+      <Suspense
+        fallback={
+          <div>
+            <SingleProductSkeleton />
+            <h2 className="mt-24 mb-5 text-xl font-bold sm:text-2xl">
+              YOU MIGHT ALSO LIKE...
+            </h2>
+            <ProductSkeleton
+              extraClassname={"colums-mobile"}
+              numberProducts={6}
+            />
+          </div>
+        }
+      >
+        <AllProducts id={params.id} />
+      </Suspense>
+    </section>
+  );
+};
 
 const AllProducts = async ({ id }: { id: string }) => {
   const session: Session | null = await getServerSession(authOptions);
