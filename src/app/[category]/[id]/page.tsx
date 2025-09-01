@@ -23,12 +23,48 @@ export async function generateMetadata({ params }: Props) {
   const product: ProductDocument = await getProduct(params.id);
   const capitalizedName = capitalizeFirstLetter(product.name);
 
+  const currency = product.currency || "IDR";
+
+  const schemaOrgProduct = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: capitalizedName,
+    image: product.images.map(
+      (img) => `${process.env.NEXT_PUBLIC_APP_URL}/product/thumbnail/${img.url}`
+    ),
+    description: product.description || "",
+    sku: product.sku,
+    brand: {
+      "@type": "Brand",
+      name: product.brand || "PT ASAHI FIBREGLASS",
+    },
+    category: product.category,
+    offers: {
+      "@type": "Offer",
+      url: `https://ipalbioasahi.com/products/${product.slug}`,
+      priceCurrency: currency,
+      price: product.price,
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+    },
+    aggregateRating: product.rating
+      ? {
+          "@type": "AggregateRating",
+          ratingValue: product.rating.average,
+          reviewCount: product.rating.count,
+        }
+      : undefined,
+  };
+
   return {
     title: `${capitalizedName} | PT ASAHI FIBREGLASS`,
-    description: product.description,
+    description: product.meta?.description || product.description,
+    keywords: product.meta?.keywords,
+    other: {
+      "application/ld+json": JSON.stringify(schemaOrgProduct),
+    },
   };
 }
-
 const ProductPage = async ({ params }: Props) => (
   <section className="pt-14">
     <Suspense

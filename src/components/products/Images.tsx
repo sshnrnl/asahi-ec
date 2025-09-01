@@ -49,18 +49,18 @@ export const Images = ({
         src={`${process.env.NEXT_PUBLIC_APP_URL}/product/thumbnail/${url}`}
         alt={alt}
         priority={priority}
-        className="w-full max-w-img aspect-[2/3] brightness-90"
+        className="w-full max-w-img aspect-[3/3] brightness-90"
         onLoad={handleImageLoadComplete}
         sizes={sizes}
       />
       <div
         className={
           !imageLoaded
-            ? "absolute top-0 right-0 w-full aspect-[2/3] bg-black"
+            ? "absolute top-0 right-0 w-full aspect-[3/3] bg-black"
             : "hidden"
         }
       >
-        <Skeleton className="w-full aspect-[2/3] rounded-b-none" />
+        <Skeleton className="w-full aspect-[3/3] rounded-b-none" />
       </div>
     </div>
   );

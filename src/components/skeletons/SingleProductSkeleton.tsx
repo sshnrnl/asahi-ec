@@ -4,7 +4,7 @@ import { Skeleton } from "../ui/skeleton";
 const SingleProductSkeleton = () => (
   <div className="flex flex-wrap justify-between gap-8">
     <div className="grow-999 basis-0">
-      <Skeleton className="w-full rounded-b-none aspect-[2/3] min-w-[250px] lg:aspect-[4/6] lg:min-w-[560px]" />
+      <Skeleton className="w-full rounded-b-none aspect-[3/3] min-w-[250px] lg:aspect-[4/6] lg:min-w-[560px]" />
     </div>
 
     <div className="sticky flex flex-col items-center justify-center w-full h-full gap-5 grow basis-600 top-8">

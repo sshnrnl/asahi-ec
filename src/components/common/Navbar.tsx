@@ -231,7 +231,7 @@ export const Navbar = ({ session, totalItemsCart, totalWishlists }: Navbar) => {
             </span>
           </Link>
         </li> */}
-        <li className="flex items-center justify-center">
+        {/* <li className="flex items-center justify-center">
           <Link
             href="/wishlist"
             aria-label="Products saved in whishlist"
@@ -254,7 +254,7 @@ export const Navbar = ({ session, totalItemsCart, totalWishlists }: Navbar) => {
               {totalWishlists || 0}
             </span>
           </Link>
-        </li>
+        </li> */}
       </ul>
     </header>
   );
