@@ -71,7 +71,6 @@ const ProductPage = async ({ params }: Props) => {
       <Script
         id="ld-json-product"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(schemaOrgProduct),
         }}
