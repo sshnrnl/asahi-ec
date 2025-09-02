@@ -48,32 +48,33 @@ const ProductPage = async ({ params }: Props) => {
       "@type": "Brand",
       name: product.brand || "PT ASAHI FIBREGLASS",
     },
-    category: product.category,
     offers: {
       "@type": "Offer",
       url: `https://ipalbioasahi.com/products/${product.slug}`,
       priceCurrency: product.currency || "IDR",
-      price: product.price,
+      price: product.price ? String(product.price) : undefined,
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
     },
     aggregateRating: product.rating
       ? {
           "@type": "AggregateRating",
-          ratingValue: product.rating.average,
-          reviewCount: product.rating.count,
+          ratingValue: String(product.rating.average),
+          reviewCount: String(product.rating.count),
         }
       : undefined,
   };
 
   return (
     <section className="pt-14">
-      {/* ✅ JSON-LD keluar sebagai <script> */}
+      {/* ✅ JSON-LD keluar sebagai <script> yang valid */}
       <Script
         id="ld-json-product"
         type="application/ld+json"
         strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrgProduct) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schemaOrgProduct),
+        }}
       />
 
       <Suspense
