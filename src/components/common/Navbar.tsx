@@ -37,6 +37,10 @@ export const Navbar = ({ session, totalItemsCart, totalWishlists }: Navbar) => {
       name: "IPAL DOMESTIK",
     },
     {
+      path: `${process.env.NEXT_PUBLIC_APP_URL}/IPAL-Industri/ipal-industri-makanan-rumah-makan-catering-solusi-pengolahan-limbah`,
+      name: "IPAL INDUSTRI",
+    },
+    {
       path: `${process.env.NEXT_PUBLIC_APP_URL}/IPAL/jual-ipal-terbaik-harga-murah-agustus-2025-cicil-0`,
       name: "IPAL",
     },

@@ -125,6 +125,14 @@ export const Footer = () => {
               >
                 IPAL DOMESTIK
               </Link>
+
+              <li className={liStyles}>
+              <Link
+                href={`${process.env.NEXT_PUBLIC_APP_URL}/IPAL-Industri/ipal-industri-makanan-rumah-makan-catering-solusi-pengolahan-limbah`}
+                className={linkStyles}
+              >
+                IPAL INDUSTRI
+              </Link>
             </li>
           </ul>
         </div>
