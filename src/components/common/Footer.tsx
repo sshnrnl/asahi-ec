@@ -17,27 +17,13 @@ export const Footer = () => {
               target="_blank"
               title="Portfolio of Marcos"
             >
-              <svg
-                data-testid="geist-icon"
-                height="24"
-                strokeLinejoin="round"
-                viewBox="0 0 16 16"
-                width="24"
-                style={{ color: "currentColor" }}
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M8 1L16 15H0L8 1Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
+              <img className="h-6" src="logo/logo.svg" alt="" />
             </Link>
             <span className="flex items-center text-sm text-[#A1A1A1]">
-              © 2023
+              © 2025
             </span>
           </div>
-          <div className="flex gap-3.5">
+          <div className="hidden gap-3.5">
             <Link
               href="https://www.linkedin.com/in/marcospenelascamara/"
               target="_blank"
@@ -137,14 +123,17 @@ export const Footer = () => {
           </ul>
         </div>
         <div className="w-full max-w-xs">
-          <h2 className="my-3 text-sm font-medium">Assistance</h2>
+          <h2 className="my-3 text-sm font-medium">IPAL Lainnya</h2>
           <ul className="grid grid-cols-2">
             <li className={liStyles}>
-              <Link href="#" className={linkStyles}>
-                Size guide
+              <Link
+                href="https://ipalbioasahi.com/IPAL-MBG/ipal-mbg-dapur-restaurant-dan-rumah-makan-bersertifikat-2025---solusi-pengolahan-air-limbah"
+                className={linkStyles}
+              >
+                IPAL MBG
               </Link>
             </li>
-            <li className={liStyles}>
+            {/* <li className={liStyles}>
               <Link href="#" className={linkStyles}>
                 Delivery
               </Link>
@@ -153,22 +142,22 @@ export const Footer = () => {
               <Link href="#" className={linkStyles}>
                 Returns and refunds
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="w-full max-w-xs">
-          <h2 className="my-3 text-sm font-medium">About Marcos</h2>
+          <h2 className="my-3 text-sm font-medium">STP Biotech</h2>
           <ul className="grid grid-cols-2">
             <li className={liStyles}>
               <Link
-                href="https://portfoliomarcos.com/"
+                href="https://ipalbioasahi.com/STP/jual-stp-biotech-sistem-pengolahan-air-limbah-bioteknologi"
                 target="_blank"
                 className={linkStyles}
               >
-                Portfolio
+                STP Biotech
               </Link>
             </li>
-            <li className={liStyles}>
+            {/* <li className={liStyles}>
               <Link
                 href="https://www.linkedin.com/in/marcospenelascamara/"
                 target="_blank"
@@ -194,7 +183,7 @@ export const Footer = () => {
               >
                 Medium
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>

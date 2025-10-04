@@ -41,13 +41,16 @@ export default async function RootLayout({
             totalItemsCart={totalItemsCart}
             totalWishlists={totalItemsWishlists?.items.length}
           />
+
+          
+
           <main className="pointer-events-auto">
             {children}
             <Toaster position="top-right" />
             <Analytics />
             <SpeedInsights />
           </main>
-          {/* <Footer /> */}
+          <Footer />
 
           <div className="z-10 flex items-center gap-2 h-min py-3 px-5 rounded-md bg-green-500 w-min fixed bottom-4 right-4">
             <a
