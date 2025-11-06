@@ -42,8 +42,6 @@ export default async function RootLayout({
             totalWishlists={totalItemsWishlists?.items.length}
           />
 
-          
-
           <main className="pointer-events-auto">
             {children}
             <Toaster position="top-right" />
@@ -56,7 +54,7 @@ export default async function RootLayout({
             <a
               className="flex items-center gap-2"
               href={`https://api.whatsapp.com/send?phone=6282116600600&text=${encodeURIComponent(
-                "Terima kasih telah menghubungi PT. Asahi Fibreglass. Kami produsen IPAL, STP, Tangki Air, Tangki Kimia, Septic Tank & produk fiberglass lainnya.\n\nMohon isi data berikut,\n\n\t1.	Nama :\n\t2.	Perusahaan (PT) :\n\t3.	Lokasi Proyek :\n\t4.	Kebutuhan : \n\nTim kami akan segera menghubungi Anda 🙏🏻"
+                "Terima kasih telah menghubungi PT. Asahi Fibreglass. Kami produsen IPAL, STP, Tangki Air, Tangki Kimia, Septic Tank & produk fiberglass lainnya.\n(ipalbioasahi.com)\n\nMohon isi data berikut,\n\n\t1.	Nama :\n\t2.	Perusahaan (PT) :\n\t3.	Lokasi Proyek :\n\t4.	Kebutuhan : \n\nTim kami akan segera menghubungi Anda 🙏🏻"
               )}`}
               target="_blank"
               rel="noopener noreferrer"
